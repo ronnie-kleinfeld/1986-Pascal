@@ -1,0 +1,40 @@
+ A - 1 120 x | A - H  35 # |     F1   59 ; | C - F1   94 ^ | Rubout      8
+ A - 2 121 y | A - I  23   |     F2   60 < | C - F2   95 _ | Home       71 G
+ A - 3 122 z | A - J  36 $ |     F3   61 = | C - F3   96 ` | Up         72 H
+ A - 4 123 { | A - K  37 % |     F4   62 > | C - F4   97 A | Pgup       73 I
+ A - 5 124 | | A - L  38 & |     F5   63 ? | C - F5   98 B | Right      75 K
+ A - 6 125 } | A - M  50 2 |     F6   64 @ | C - F6   99 C | Left       77 M
+ A - 7 126 ~ | A - N  49 1 |     F7   65 A | C - F7  100 D | End        79 O
+ A - 8 127   | A - O  24   |     F8   66 B | C - F8  101 E | Down       80 P
+ A - 9 128 Ä | A - P  25   |     F9   67 C | C - F9  102 F | Pgdn       81 Q
+ A - 0 129 Å | A - Q  16   |     F10  68 D | C - F10 103 G | Ins        82 R
+ A - - 130 Ç | A - R  19   | A - F1  104 h | S - F1   84 T | Del        83 S
+ A - = 131 É | A - S  31   | A - F2  105 i | S - F2   85 U | Tab         9
+ A - A  30   | A - T  20   | A - F3  106 j | S - F3   86 V | B.Tab      15
+ A - B  48 0 | A - U  22   | A - F4  107 k | S - F4   87 W | Esc        27
+ A - C  46 . | A - V  47 / | A - F5  108 l | S - F5   88 X | C - Home  119 w
+ A - D  32 $ | A - W  17   | A - F6  109 m | S - F6   89 Y | C - Pgdn  132 D
+ A - E  18  | A - X  45 - | A - F7  110 n | S - F7   90 Z | C - Left  115 s
+ A - F  33 ! | A - Y  21   | A - F8  111 o | S - F8   91 [ | C - Right 116 t
+ A - G  34 " | A - Z  44 , | A - F9  112 p | S - F9   92 \ | C - End   117 u
+ C - <-127   | C - * 114 r | A - F10 113 q | S - F10  93 ] | C - Pgdn  118 v
+
+
+      : I-O Errors :
+      --------------
+01 File does not exist.
+02 File not open for input.
+03 File not open for output.
+04 File not open.
+10 Error in numeric format.
+20 Operation not allowed on logical device.
+21 Not allowed in direct mode.
+22 Assign to std files not allowed.
+90 Record length mismatch.
+91 Seek beyond end-of-file.
+99 Unexpected end-of-file.
+F0 Disk write error.
+F1 Directory is full.
+F2 File size overlow.
+F3 Too many files.
+FF File disappeared.
