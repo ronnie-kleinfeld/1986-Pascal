@@ -1,0 +1,39 @@
+@using Micro8085.Core.Assembly
+@model LoadProgramViewModel
+@{
+    ViewData["Title"] = "Load";
+}
+
+<section class="window">
+    <h1>LOAD</h1>
+
+    @if (Model.Programs.Count == 0)
+    {
+        <p class="hint">Main file "MCRNAME.DAT" not found</p>
+    }
+    else
+    {
+        <form asp-action="Load" method="post">
+            <div class="form-grid">
+                <label asp-for="Name"></label>
+                <select asp-for="Name">
+                    <option value="">________</option>
+                    @foreach (var entry in Model.Programs)
+                    {
+                        <option value="@entry.Name">@entry.Name  (h@(Hex.Word(entry.StartAddress)), @entry.Length bytes)</option>
+                    }
+                </select>
+                <span asp-validation-for="Name" class="field-error"></span>
+
+                <label asp-for="From"></label>
+                <input asp-for="From" type="text" maxlength="4" placeholder="saved address" />
+                <span asp-validation-for="From" class="field-error"></span>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Load</button>
+                <a class="button" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    }
+    <p class="hint">Leave From blank to load at the address the program was saved from.</p>
+</section>

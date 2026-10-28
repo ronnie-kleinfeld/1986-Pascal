@@ -1,0 +1,29 @@
+@model SaveProgramViewModel
+@{
+    ViewData["Title"] = "Save";
+}
+
+<section class="window">
+    <h1>SAVE</h1>
+
+    <form asp-action="Save" method="post">
+        <div class="form-grid">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" type="text" maxlength="8" placeholder="________" />
+            <span asp-validation-for="Name" class="field-error"></span>
+
+            <label asp-for="Start">Range from</label>
+            <input asp-for="Start" type="text" maxlength="4" placeholder="____" />
+            <span asp-validation-for="Start" class="field-error"></span>
+
+            <label asp-for="End">to</label>
+            <input asp-for="End" type="text" maxlength="4" placeholder="____" />
+            <span asp-validation-for="End" class="field-error"></span>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Save</button>
+            <a class="button" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+    <p class="hint">Saving under an existing name replaces that file.</p>
+</section>

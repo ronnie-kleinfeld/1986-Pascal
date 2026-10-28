@@ -1,0 +1,97 @@
+@{
+    ViewData["Title"] = "Commands";
+}
+
+<section class="window">
+    <h1>COMMANDS - Main menu</h1>
+    <pre class="help">A. A0000              O. O0000
+C. CLS                P. P0000-0000
+G. G0000              R. R:reg=
+K. K0000-0000         S. S0000
+L. L0000-0000         T. T0000
+M. M0000-0000 0000</pre>
+
+    <h2 id="A">A0000 - Append (mnemonics)</h2>
+    <pre class="help">A0000 ___________    A2000 MVI  A,38 &lt;- Example
+│└─┬┘ └─┬┘└──┬──┘
+│  │    │    └─> Mnemonics operand.
+│  │    └─> Mnemonics operation.
+│  └─> Address in Hex.
+└─> Command.</pre>
+    <p>After each line the next address is offered (A2002), so a program can be typed line by line.</p>
+
+    <h2 id="O">O0000 - Append (op codes)</h2>
+    <pre class="help">O0000 __ ____      O2000 3E,38 &lt;- Example
+│└─┬┘ └┤ └─┬┘
+│  │   │   └─> Op code operand.
+│  │   └─> Op code operation.
+│  └─> Address in Hex.
+└─> Command.</pre>
+
+    <h2 id="S">S0000 - Set</h2>
+    <pre class="help">S0000 __,__,__,...   S2000 48,54 &lt;- Example
+│└─┬┘ └┤ └┤ └┤ └┤
+│  │   └──┴──┴──┴─> Op codes.
+│  └─> Address in Hex.
+└─> Command.</pre>
+    <p>This command will set the memory to the following op codes, as many as there are.</p>
+
+    <h2 id="L">L0000-0000 - List in mnemonics</h2>
+    <pre class="help">L2000-2010   a range         A2000:MVI  A,38   │ O2000:3E,38
+L2000-       up to h7FFF        .   .    .    │   .   .  .
+L2000        one line only   A2010:HLT        │ O2010:76</pre>
+    <p>Long listings stop every 200 lines: press space to continue, any other key to end.</p>
+
+    <h2 id="K">K0000-0000 - List in op codes</h2>
+    <pre class="help">O2010:3E,38        │A2010 MVI  A,38</pre>
+    <p>Exactly as L, with the op code column first.</p>
+
+    <h2 id="P">P0000-0000 - Print in mnemonics</h2>
+    <p>As L, but the listing goes to the printer (the browser print dialog).</p>
+
+    <h2 id="M">M0000-0000 0000 - Move</h2>
+    <pre class="help">M0000-0000 0000       M2000-2010 3000 &lt;- Example
+│└─┬┘ └─┬┘ └─┬┘
+│  │    │    └─> Address in Hex where to start the new addressing.
+│  │    └─> Address in Hex.
+│  └─> Address in Hex.
+└─> Command.</pre>
+
+    <h2 id="R">R:reg= - Set a register or flag to a value</h2>
+    <pre class="help">R:reg=____                      R:A=15 &lt;- Example
+│ └┬┘ └─┬┘
+│  │    └─> Value in Hex.
+│  └─> Name of register.
+└─> Command.</pre>
+    <p>A, B, C, D, E, H, L, M(HL) &middot; SP stack pointer, PC program counter &middot;
+        PSW accumulator + flag register &middot; BC, DE, HL pair registers &middot;
+        S sign, Z zero, P parity, CY carry, AC auxiliary carry.</p>
+
+    <h2 id="G">G0000 - Run</h2>
+    <pre class="help">G0000                           G2000 &lt;- Example
+│└─┬┘
+│  └─> Address in Hex (leave out to run from PC).
+└─> Command.</pre>
+    <p>While running: space pauses, B breaks. HLT stops with "Halt at".</p>
+
+    <h2 id="T">T0000 - Trace</h2>
+    <pre class="help">T0000                           T2000 &lt;- Example
+│└─┬┘
+│  └─> Address in Hex.
+└─> Command.</pre>
+    <p>One instruction per key press, with the registers shown after each; B breaks.</p>
+
+    <h2 id="C">CLS - Clear screen</h2>
+    <pre class="help">CLS
+└┬┘
+ └─> Command.</pre>
+
+    <h2 id="ports">Ports on the board</h2>
+    <pre class="help">OUT #00   binary LEDs              IN #00   the eight switches (1 = bit 7)
+OUT #04   segments of a digit       IN #FF   one key from the keyboard
+OUT #05   1000 I PPP: digit PPP, I = auto-increment
+OUT #FF   a character on the keyboard line</pre>
+    <p>Segments are active low, bit 7 to 0: d c b a dp g f e. HOLD addr (08) pauses the program.</p>
+
+    <p class="hint">Esc / F7 Exit</p>
+</section>

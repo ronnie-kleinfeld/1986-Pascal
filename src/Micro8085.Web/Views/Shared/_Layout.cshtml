@@ -1,0 +1,32 @@
+﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="@Antiforgery.GetAndStoreTokens(Context).RequestToken" />
+    <title>@(ViewData["Title"] is string title ? $"{title} - MICRO 8085" : "MICRO 8085")</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="crt">
+        <header class="banner">
+            <span>By Raanan Kleinfeld</span>
+            <span>1988 (c) All rights reserved MADA</span>
+        </header>
+        <main role="main">
+            @RenderBody()
+        </main>
+        <nav class="keys" aria-label="Function keys">
+            <a asp-controller="Help" asp-action="Commands" data-key="F1"><kbd>F1</kbd>-Orders</a>
+            <a asp-controller="Help" asp-action="Errors" data-key="F3"><kbd>F3</kbd>-Error</a>
+            <a asp-controller="Operate" asp-action="Index" data-key="F5"><kbd>F5</kbd>-Operator</a>
+            <a asp-controller="Home" asp-action="Index" data-key="F7"><kbd>F7</kbd>-@(ViewContext.RouteData.Values["controller"] as string == "Home" ? "Editor" : "Exit")</a>
+            <a asp-controller="Programs" asp-action="Index" data-key="F9"><kbd>F9</kbd>-Input\Output</a>
+            <a asp-controller="Help" asp-action="Instructions">8085 card</a>
+        </nav>
+    </div>
+    <script src="~/js/keys.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

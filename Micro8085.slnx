@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Micro8085.Core/Micro8085.Core.csproj" />
+    <Project Path="src/Micro8085.Web/Micro8085.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Micro8085.Core.Tests/Micro8085.Core.Tests.csproj" />
+  </Folder>
+</Solution>

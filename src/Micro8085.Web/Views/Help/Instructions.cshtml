@@ -1,0 +1,13 @@
+@model string
+@{
+    ViewData["Title"] = "8085 instruction card";
+}
+
+<section class="window wide">
+    <h1>COMMANDS FOR 8085</h1>
+    <pre class="card">@Model</pre>
+    <p class="hint">
+        The printed reference card that shipped with the program (MICRO.CMD).
+        Not listed on it: <b>HOLD addr</b> (08), this simulator's own delay instruction.
+    </p>
+</section>

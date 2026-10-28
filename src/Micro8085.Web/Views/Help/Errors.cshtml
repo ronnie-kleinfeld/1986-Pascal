@@ -1,0 +1,16 @@
+@model IReadOnlyList<Micro8085.Core.Monitor.MonitorErrorInfo>
+@{
+    ViewData["Title"] = "Errors";
+}
+
+<section class="window">
+    <h1>ERROR</h1>
+    <dl class="errors">
+        @foreach (var error in Model)
+        {
+            <dt id="error-@((int)error.Code)">@((int)error.Code) @error.Title</dt>
+            <dd>@error.Description</dd>
+        }
+    </dl>
+    <p class="hint">Esc / F7 Exit</p>
+</section>

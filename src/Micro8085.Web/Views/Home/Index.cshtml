@@ -1,0 +1,74 @@
+﻿@using System.Text.Json
+@using Micro8085.Web.Infrastructure
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Editor";
+}
+
+<div class="screen">
+    <section class="editor" aria-label="Editor">
+        <div class="titlebar">
+            <span id="mode">Ready</span>
+            <span>Ver 2.00</span>
+        </div>
+        <div id="log" class="log" role="log" aria-live="polite">
+            @foreach (var line in Model.Log)
+            {
+                <div class="row @line.Kind.ToString().ToLowerInvariant()"><span>@line.Left</span><span>@line.Right</span></div>
+            }
+        </div>
+        <form id="command-form" class="command" autocomplete="off">
+            <label for="command">&gt;</label>
+            <input id="command" name="command" maxlength="60" spellcheck="false" autocapitalize="characters" autofocus
+                   placeholder="A2000 MVI A,38" aria-describedby="message" />
+        </form>
+    </section>
+
+    <aside class="board" aria-label="Registers and trainer board">
+        <div class="panel">
+            <div class="heading">Flag registers - <span id="flags">s z p c</span></div>
+            <pre id="registers" class="registers"></pre>
+        </div>
+
+        <div class="panel">
+            <div class="heading">Keyboard</div>
+            <div class="kbd-line">#FF -&gt; [<span id="keyboard"></span>]</div>
+        </div>
+
+        <div class="panel">
+            <div class="heading">Binary display <span class="port">#00</span></div>
+            <div class="bits">
+                <span class="caption">Out</span>
+                <div id="leds" class="leds"></div>
+                <span class="caption">In</span>
+                <div id="switches" class="switches"></div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="heading">Digital display <span class="port">#04,#05</span></div>
+            <div id="digits" class="digits"></div>
+        </div>
+
+        <div class="panel controls">
+            <label for="speed">Speed</label>
+            <select id="speed">
+                <option value="500">500 instr/s</option>
+                <option value="2000" selected>2,000 instr/s</option>
+                <option value="10000">10,000 instr/s</option>
+                <option value="100000">100,000 instr/s</option>
+                <option value="2000000">Full speed</option>
+            </select>
+            <button id="break" type="button" disabled>Break (B)</button>
+        </div>
+    </aside>
+</div>
+
+<div id="message" class="message" role="status"></div>
+<pre id="printout" class="printout"></pre>
+
+<script id="initial-state" type="application/json">@Html.Raw(JsonSerializer.Serialize(Model.State, JsonDefaults.Options))</script>
+
+@section Scripts {
+    <script src="~/js/micro.js" asp-append-version="true"></script>
+}

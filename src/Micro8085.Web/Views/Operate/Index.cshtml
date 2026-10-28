@@ -1,0 +1,24 @@
+@model OperateViewModel
+@{
+    ViewData["Title"] = "Operate";
+}
+
+<section class="window">
+    <h1>OPERATE - MAIN MENU</h1>
+    <form asp-action="Index" method="post">
+        <ul class="options">
+            <li><label><input asp-for="Beep" /> 1. Beep</label></li>
+            <li><label><input asp-for="CleanPorts" /> 2. Clean ports</label></li>
+            <li><label><input asp-for="ClearRegisters" /> 3. Clear registers</label></li>
+            <li><label><input asp-for="OriginalRotates" /> 4. 1988 rotates (RLC/RAL and RRC/RAR swapped)</label></li>
+        </ul>
+        <div class="form-actions">
+            <button type="submit">Apply</button>
+            <a class="button" asp-controller="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+    <p class="hint">Clean ports blanks the LEDs, digital display and keyboard line.
+        Clear registers zeroes A-L and the flags, SP = h38FE, PC = h2000.</p>
+    <p class="hint">The 1988 simulator, and its printed card, had the rotate instructions swapped.
+        Loading an unmodified 1988 sample such as STEPS turns option 4 on, and loading any other program turns it off.</p>
+</section>

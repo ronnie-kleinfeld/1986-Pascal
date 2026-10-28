@@ -1,0 +1,15 @@
+@using Micro8085.Core.Assembly
+@model Micro8085.Core.Storage.CatalogEntry
+@{
+    ViewData["Title"] = "Erase";
+}
+
+<section class="window">
+    <h1>ERASE</h1>
+    <p style="text-align:center">File name : @Model.Name &nbsp; (h@(Hex.Word(Model.StartAddress)), @Model.Length bytes)</p>
+    <p style="text-align:center">!!! Confirm erasing !!!</p>
+    <form asp-action="Erase" asp-route-id="@Model.Name" method="post" class="form-actions">
+        <button type="submit" class="button danger">Y - Erase</button>
+        <a class="button" asp-action="Index">N - Keep</a>
+    </form>
+</section>

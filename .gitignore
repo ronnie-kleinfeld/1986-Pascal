@@ -1,0 +1,7 @@
+bin/
+obj/
+.vs/
+*.user
+.DS_Store
+src/Micro8085.Web/App_Data/
+TestResults/
