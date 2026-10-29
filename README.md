@@ -1,4 +1,4 @@
-# 1986-Pascal
+# 198604-Pascal
 
 MICRO is an Intel 8085 trainer simulator written by Raanan Kleinfeld in Turbo Pascal for MS-DOS (Ver 2.00, 1988).
 It combines a line editor and assembler, a register panel, and a simulated trainer board with LEDs, switches,
